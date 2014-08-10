@@ -1,5 +1,4 @@
 import yaml
-import datetime
 
 def minute_to_kana(minutes):
 
@@ -20,8 +19,8 @@ def minute_to_kana(minutes):
     return m_kana
 
 
-def decakana(num):
-    """Return the kana for the value of ``num`` greater than 10."""
+def decakana(num, kanji=False):
+    """Return the reading for the portion of ``num`` greater than 10."""
 
     # TODO: Kanji readings
     # TODO: num >= 100
