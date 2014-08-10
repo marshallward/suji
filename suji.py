@@ -1,22 +1,31 @@
 import yaml
 
-def minute_to_kana(minutes):
+def counter_kana(num, counter_reading):
 
-    # Check input
-    if not type(minutes) is int or minutes < 0:
-        raise ValueError('Input must be a non-negative integer.')
+    yomi = decakana(num)
+
+    if num > 0 and num % 10 == 0:
+        yomi += counter_reading[10]
+    else:
+        yomi += counter_reading[num % 10]
+
+    return yomi
+
+
+def minutes_to_kana(minutes):
 
     with open('time.yaml') as time_file:
-        time_file = yaml.load(time_file)
+        min_reading = yaml.load(time_file)['minutes']
 
-    m_kana = decakana(minutes)
+    return counter_kana(minutes, min_reading)
 
-    if minutes > 0 and minutes % 10 == 0:
-        m_kana += t_cnt['minutes'][10]
-    else:
-        m_kana += t_cnt['minutes'][minutes % 10]
 
-    return m_kana
+def hours_to_kana(hours):
+
+    with open('time.yaml') as time_file:
+        hr_reading = yaml.load(time_file)['hours']
+
+    return counter_kana(hours, hr_reading)
 
 
 def decakana(num, kanji=False):
