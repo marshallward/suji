@@ -38,7 +38,7 @@ def decakana(num, kanji=False):
     with open('digits.yaml') as digits_file:
         digits = yaml.load(digits_file)
 
-    danum_q = num / 10
+    danum_q = num // 10
     danum_r = num % 10
 
     danum_kana = ''
